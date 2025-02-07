@@ -1,0 +1,53 @@
+body {
+  @apply bg-body font-roboto text-text;
+}
+
+#app {
+  @apply flex flex-col min-h-screen;
+}
+
+select,
+input {
+  @apply outline-0 rounded-lg border border-transparent bg-body-light px-4 py-3 text-text-dark transition;
+}
+
+input {
+  caret-color: #0affefbb;
+}
+
+select {
+  @apply pr-12;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url('@/assets/images/select-icon.svg');
+  background-repeat: no-repeat, repeat;
+  background-position:
+    right 0.7em top 50%,
+    0 0;
+  background-size:
+    0.65em auto,
+    100%;
+}
+
+input:-webkit-autofill {
+  @apply outline-0 rounded-lg bg-body-light  px-4 py-3 text-text-dark transition;
+  -webkit-text-fill-color: #8d9ba5;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+select:focus {
+  outline: none;
+  @apply border-border text-text-light;
+}
+
+input:focus {
+  outline: none;
+  @apply border-border text-text-light;
+}
+
+input:-webkit-autofill:focus {
+  outline: none;
+  @apply border-border text-text-light;
+}

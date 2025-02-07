@@ -1,0 +1,18 @@
+@theme {
+  --font-roboto: 'Roboto', 'sans-serif';
+
+  --color-body: #111b22;
+  --color-body-dark: #0d161c;
+  --color-body-light: #1b2832;
+
+  --color-text: #c6cdd2;
+  --color-text-dark: #8d9ba5;
+  --color-text-light: #fcfdfd;
+
+  --color-border: #253541;
+
+  --color-blue: #35a9fd;
+  --color-red: #8a2e34;
+  --color-green: #4ade80;
+  --color-yellow: #fbc451;
+}
