@@ -1,4 +1,4 @@
-export const Consts: { [key: string]: string } = {
+export const ENV: { [key: string]: string } = {
   ...Object.keys(import.meta.env)
     .filter((k) => k.includes('VITE_'))
     .reduce(

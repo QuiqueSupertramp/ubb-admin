@@ -1,5 +1,4 @@
 @import 'tailwindcss';
 
 @import './assets/css/theme.css';
-@import './assets/css/layer.css';
-@import './assets/css/custom.css';
+@import './assets/css/base.css';

@@ -1,0 +1,7 @@
+body {
+  @apply bg-body font-roboto text-text;
+}
+
+#app {
+  @apply flex flex-col min-h-screen;
+}

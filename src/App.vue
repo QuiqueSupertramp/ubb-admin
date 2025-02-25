@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import MobileLayout from '@/layouts/mobile/MobileLayout.vue'
+</script>
 
 <template>
-  <h1 class="text-3xl">hola</h1>
+  <MobileLayout />
 </template>
