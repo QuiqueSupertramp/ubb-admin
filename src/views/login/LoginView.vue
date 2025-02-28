@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import LoginForm from './form/LoginForm.vue'
+</script>
 
 <template>
   <div class="flex flex-col flex-grow gap-20 mt-16">
-    <h1>LOGIN</h1>
+    <LoginForm />
   </div>
 </template>

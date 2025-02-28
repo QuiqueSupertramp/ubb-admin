@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { VARIANTS } from '@/lib/variants.ts'
+import CustomIcon from '../icons/CustomIcon.vue'
 
 interface Props {
   text?: string
@@ -34,6 +35,9 @@ const customButtonClass = {
     ]"
     :disabled="disabled"
   >
+    <CustomIcon v-if="icon && iconPosition === 'before'" :icon="icon" :width="iconWidth" />
+    <span v-if="text">{{ text }}</span>
+    <CustomIcon v-if="icon && iconPosition === 'after'" :icon="icon" :width="iconWidth" />
     <slot />
   </button>
 </template>

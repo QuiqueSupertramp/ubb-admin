@@ -5,3 +5,30 @@ body {
 #app {
   @apply flex flex-col min-h-screen;
 }
+
+select,
+input {
+  @apply outline-0 rounded-lg border border-transparent bg-body-light px-4 py-3 text-text-dark transition;
+}
+
+input {
+  caret-color: #0affefbb;
+}
+
+input:-webkit-autofill {
+  @apply outline-0 rounded-lg bg-body-light  px-4 py-3 text-text-dark transition;
+  -webkit-text-fill-color: #8d9ba5;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:focus:not(.invalid),
+input:-webkit-autofill:focus:not(.invalid),
+select:focus {
+  outline: none;
+  @apply border-border text-text-light;
+}
+
+.invalid {
+  @apply border-red-400;
+}
