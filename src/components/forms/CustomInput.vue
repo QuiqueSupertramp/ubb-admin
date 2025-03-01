@@ -41,7 +41,8 @@ const currentId = computed(() => props.options.id ?? props.options.label)
   <div class="flex flex-col gap-2 w-full">
     <label :for="currentId" class="flex gap-2 items-stretch text-text">
       <CustomIcon v-if="options.labelIcon" :icon="options.labelIcon" :width="16" />
-      {{ options.label }}
+      <span>{{ options.label }}</span>
+      <span v-if="options.required">*</span>
     </label>
     <div class="relative">
       <input

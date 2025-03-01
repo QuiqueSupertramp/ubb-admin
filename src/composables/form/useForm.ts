@@ -2,12 +2,12 @@ import { computed, ref, watch } from 'vue'
 import type { FormError, FormErrors, FormModel, InputModel, Model } from './types'
 import { getValuesFromModel, setErrorsFromModel, setOptionsFromModel } from './helpers'
 
-export const useForm = <M extends Model>(params: {
+interface UseFormParams<M extends Model> {
   model: FormModel<M>
   submit: () => Promise<unknown>
-}) => {
-  const { model, submit } = params
+}
 
+export const useForm = <M extends Model>({ model, submit }: UseFormParams<M>) => {
   const isFormSubmitting = ref(false)
 
   const form = ref(getValuesFromModel<M>(model))
@@ -41,11 +41,10 @@ export const useForm = <M extends Model>(params: {
     })
   })
 
-  const isFormReady = computed(
-    () =>
-      (!isFormSent.value && allRequiredsFieldsReady.value) ||
-      (isFormSent.value && !formHasErrors.value),
-  )
+  const isFormReady = computed(() => {
+    if (!isFormSent.value) return allRequiredsFieldsReady.value
+    return !formHasErrors.value
+  })
 
   const setError = (key: keyof FormErrors<M>, error: string | null) => {
     if (!key) return
@@ -76,11 +75,11 @@ export const useForm = <M extends Model>(params: {
     form,
     formErrors,
     formOptions,
-    validateForm,
     formHasErrors,
-    onSubmit,
     isFormSent,
     allRequiredsFieldsReady,
     isFormReady,
+    validateForm,
+    onSubmit,
   }
 }
