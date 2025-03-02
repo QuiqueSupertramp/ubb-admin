@@ -1,5 +1,9 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import HomeMenu from './components/menu/HomeMenu.vue'
+</script>
 
 <template>
-  <h1>home</h1>
+  <div class="h-full flex flex-col flex-grow mt-20">
+    <HomeMenu />
+  </div>
 </template>

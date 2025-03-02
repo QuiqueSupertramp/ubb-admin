@@ -9,11 +9,13 @@ interface Props {
   iconPosition?: 'before' | 'after'
   iconWidth?: number
   disabled?: boolean
+  padding?: boolean
 }
 
 withDefaults(defineProps<Props>(), {
   variant: VARIANTS.blue,
   iconPosition: 'before',
+  padding: true,
 })
 
 const customButtonClass = {
@@ -28,10 +30,11 @@ const customButtonClass = {
 
 <template>
   <button
-    class="flex gap-2 items-center justify-center py-3 px-8 rounded-full border-2"
+    class="flex gap-2 items-center justify-center rounded-full border-2"
     :class="[
       customButtonClass[variant],
       disabled ? 'opacity-50 pointer-events-none' : 'opacity-100 cursor-pointer',
+      { 'py-3 px-8': padding },
     ]"
     :disabled="disabled"
   >

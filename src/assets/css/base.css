@@ -1,5 +1,5 @@
 body {
-  @apply bg-body font-roboto text-text;
+  @apply bg-body-light font-roboto text-text;
 }
 
 #app {

@@ -19,14 +19,14 @@ const hasHeader = computed(() => {
 </script>
 
 <template>
-  <header v-if="hasHeader" class="p-4">
-    <div class="flex justify-between items-center">
+  <header v-if="hasHeader" class="py-4">
+    <div class="flex justify-between items-center py-3">
       <RouterLink to="/">
         <span class="font-bold">UBB ADMIN</span>
       </RouterLink>
 
-      <CustomButton :variant="VARIANTS.transparent" class="text-text-light">
-        <CustomIcon icon="IconMenu" />
+      <CustomButton :variant="VARIANTS.transparent" class="text-text-light" :padding="false">
+        <CustomIcon icon="IconMenu" :width="6" />
       </CustomButton>
     </div>
   </header>

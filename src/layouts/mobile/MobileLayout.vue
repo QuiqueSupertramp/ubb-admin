@@ -4,7 +4,7 @@ import MainMobile from './components/MainMobile.vue'
 </script>
 
 <template>
-  <div class="min-h-svh max-w-screen-sm mx-auto w-full">
+  <div class="bg-body min-h-svh w-[30rem] max-w-screen mx-auto flex flex-col px-8">
     <HeaderMobile />
     <MainMobile />
   </div>
