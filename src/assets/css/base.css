@@ -22,10 +22,14 @@ input:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s;
 }
 
+input:focus,
+input:-webkit-autofill:focus,
+select:focus {
+  @apply text-text-light;
+}
 input:focus:not(.invalid),
 input:-webkit-autofill:focus:not(.invalid),
 select:focus {
-  outline: none;
   @apply border-border text-text-light;
 }
 
