@@ -8,5 +8,6 @@ export const loginRoute: RouteRecordRaw = {
   component: LoginView,
   meta: {
     layout: LAYOUTS.EMPTY,
+    requiresAuth: false,
   },
 }

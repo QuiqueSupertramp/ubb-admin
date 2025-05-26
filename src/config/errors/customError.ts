@@ -1,6 +1,19 @@
+export interface CustomErrorParams {
+  message?: string
+  code?: string
+  name?: string
+}
+
 export class CustomError extends Error {
-  constructor(message: string) {
+  code: string
+
+  constructor({
+    message = "There has been a Custom Error",
+    code = "CUSTOM_ERROR",
+    name = "Custom Error",
+  }: CustomErrorParams) {
     super(message)
-    this.name = 'Error'
+    this.code = code
+    this.name = name
   }
 }

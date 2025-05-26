@@ -1,4 +1,4 @@
-import type { CustomError } from '../errors'
+import type { CustomError } from '../errors/customError'
 
 export interface SuccessResponse<T> {
   count: number | null
@@ -12,4 +12,4 @@ export interface ErrorResponse {
   error: CustomError
 }
 
-export type Response<T> = SuccessResponse<T> | ErrorResponse
+export type ApiResponse<T> = SuccessResponse<T> | ErrorResponse

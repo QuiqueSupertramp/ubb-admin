@@ -1,63 +1,54 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
 import CustomIcon from '@/components/icons/CustomIcon.vue'
-import type { FormError } from '@/composables/form/types'
 
-export interface InputOptions {
+interface Props {
   type?: 'text' | 'number' | 'search' | 'email' | 'password'
-  label: string
+  label?: string
   labelIcon?: string
-  id?: string
   autocomplete?: boolean
   inputClass?: string
   required?: boolean
+  error?: string
 }
 
-interface Props {
-  options: InputOptions
-  errors?: FormError
-  showErrors?: boolean
-}
-
-const props = withDefaults(defineProps<Props>(), {
-  options: (props) => ({
-    type: 'text',
-    autocomplete: false,
-    required: false,
-    id: props.options.id,
-    label: props.options.label,
-    labelIcon: props.options.labelIcon,
-    inputClass: props.options.inputClass,
-  }),
-  showErrors: () => false,
+withDefaults(defineProps<Props>(), {
+  type: 'text',
+  autocomplete: false,
+  required: false,
 })
 
 const inputValue = defineModel()
 
-const currentId = computed(() => props.options.id ?? props.options.label)
+const currentId = 'inputid' + crypto.randomUUID()
 </script>
 
 <template>
   <div class="flex flex-col gap-2 w-full">
-    <label :for="currentId" class="flex gap-2 items-stretch text-text">
-      <CustomIcon v-if="options.labelIcon" :icon="options.labelIcon" :width="16" />
-      <span>{{ options.label }}</span>
-      <span v-if="options.required">*</span>
+    <label
+      v-if="label"
+      :for="currentId"
+      class="flex gap-2 items-stretch text-text-dark text-sm pl-1"
+    >
+      <CustomIcon v-if="labelIcon" :icon="labelIcon" :width="16" />
+      <div>
+        <span>{{ label }}</span>
+        <span v-if="required"> *</span>
+      </div>
     </label>
     <div class="relative">
       <input
-        :type="options.type"
+        :type="type"
         :id="currentId"
         v-model="inputValue"
+        :required="required"
         spellcheck="false"
-        :autocomplete="options.autocomplete ? 'on' : 'off'"
-        class="w-full"
-        :class="[options.inputClass, { invalid: showErrors && !!errors }]"
+        :autocomplete="autocomplete ? 'on' : 'off'"
+        class="w-full outline-0 rounded-lg border border-transparent bg-body-light px-4 py-3 text-text transition"
+        :class="[{ invalid: !!error }]"
+        v-bind="$attrs"
       />
       <slot />
     </div>
-    <ul v-if="showErrors && errors">
-      <li v-for="error in errors" :key="error" class="text-red-400 text-sm ml-3">{{ error }}</li>
-    </ul>
+    <div v-if="error" class="text-red-400 text-xs ml-3">{{ error }}</div>
   </div>
 </template>

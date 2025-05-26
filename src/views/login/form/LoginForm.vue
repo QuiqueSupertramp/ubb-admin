@@ -1,34 +1,28 @@
 <script setup lang="ts">
-import { useForm } from '@/composables/form/useForm'
-import { loginModel, type LoginModel } from './loginModel'
+import CustomButton from '@/components/buttons/CustomButton.vue'
 import CustomInput from '@/components/forms/CustomInput.vue'
 import CustomInputPassword from '@/components/forms/CustomInputPassword.vue'
-import CustomButton from '@/components/buttons/CustomButton.vue'
+import useLogin from './useLogin'
 
-const submit = async () => {
-  console.log('form.value:', form.value)
-}
-
-const { form, formOptions, formErrors, onSubmit, isFormSent, isFormReady } = useForm<LoginModel>({
-  model: loginModel,
-  submit,
-})
+const { form, isLoading, errors, handleSubmit } = useLogin()
 </script>
 
 <template>
-  <form class="flex flex-col gap-12 items-center" @submit.prevent="onSubmit">
+  <form class="flex flex-col gap-12 items-center" @submit.prevent="handleSubmit">
     <div class="flex flex-col gap-5 items-center w-full">
       <CustomInput
         v-model="form.email"
-        :options="formOptions.email"
-        :errors="formErrors.email"
-        :show-errors="isFormSent"
+        :error="errors?.email"
+        label="Correo Electronico"
+        type="email"
+        :autocomplete="true"
+        :required="true"
       />
       <CustomInputPassword
         v-model="form.password"
-        :options="formOptions.password"
-        :errors="formErrors.password"
-        :show-errors="isFormSent"
+        label="Contraseña"
+        :required="true"
+        :error="errors?.password"
       />
     </div>
 
@@ -37,7 +31,7 @@ const { form, formOptions, formErrors, onSubmit, isFormSent, isFormReady } = use
       text="Acceder"
       icon="IconSignup"
       icon-position="after"
-      :disabled="!isFormReady"
+      :disabled="isLoading || !!errors"
     />
   </form>
 </template>

@@ -22,7 +22,7 @@ const hasHeader = computed(() => {
   <header v-if="hasHeader" class="py-4">
     <div class="flex justify-between items-center py-3">
       <RouterLink to="/">
-        <span class="font-bold">UBB ADMIN</span>
+        <span class="font-bold tracking-widest italic">UBB ADMIN</span>
       </RouterLink>
 
       <CustomButton :variant="VARIANTS.transparent" class="text-text-light" :padding="false">

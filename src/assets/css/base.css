@@ -1,14 +1,9 @@
 body {
-  @apply bg-body-light font-roboto text-text;
+  @apply bg-black font-roboto text-text;
 }
 
 #app {
   @apply flex flex-col min-h-screen;
-}
-
-select,
-input {
-  @apply outline-0 rounded-lg border border-transparent bg-body-light px-4 py-3 text-text-dark transition;
 }
 
 input {
@@ -16,8 +11,8 @@ input {
 }
 
 input:-webkit-autofill {
-  @apply outline-0 rounded-lg bg-body-light  px-4 py-3 text-text-dark transition;
-  -webkit-text-fill-color: #8d9ba5;
+  @apply outline-0 rounded-lg bg-body-light px-4 py-3 text-text transition;
+  -webkit-text-fill-color: #c6cdd2;
   -webkit-box-shadow: none;
   transition: background-color 5000s ease-in-out 0s;
 }
@@ -34,5 +29,5 @@ select:focus {
 }
 
 .invalid {
-  @apply border-red-400;
+  @apply border-b-red-400;
 }
