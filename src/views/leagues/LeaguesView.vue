@@ -1,0 +1,1 @@
+<template>Leagues</template>
